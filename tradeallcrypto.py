@@ -2020,65 +2020,74 @@ def tradeallcrypto_reg(pip1):
     prox1.proxy_type = ProxyType.MANUAL
     prox1.http_proxy = pip1
     prox1.ssl_proxy = pip1
-    chrome_options1 = webdriver.ChromeOptions()
+    chrome_options1 = chrome_options
     chrome_options1.add_argument('--ignore-certificate-errors')
     chrome_options1.add_argument('--disable-notifications')
 
 # Configure capabilities 
     capabilities1 = webdriver.DesiredCapabilities.CHROME
     prox1.add_to_capabilities(capabilities1)
-    print ("proxy added")
-#            print(PATH)
+#    print ("proxy added")
+#    print(PATH)
 #            print(chrome_options)
  #           print(desired_capabilities)
-    driver1 = webdriver.Chrome(PATH, options=chrome_options1, desired_capabilities=capabilities1)
+    try:
+        driver1 = webdriver.Chrome(PATH, options=chrome_options1, desired_capabilities=capabilities1)
 #    driver1 = webdriver.Chrome(PATH, options=chrome_options1)
-    driver1.set_page_load_timeout(20)
-    driver1.implicitly_wait(20)
-    driver1.get('https://tradeallcrypto.info')
-    print ("got driver")
-    _wait_element_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[1]/div/input',driver1)
-    print ("element found")
-    _log(pip1)
-    _click_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[3]',driver1)
+        driver1.set_page_load_timeout(20)
+        driver1.implicitly_wait(20)
+        driver1.get('https://tradeallcrypto.info')
+#    print ("got driver")
+        _wait_element_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[1]/div/input',driver1)
+        print ("element found")
+        _log(pip1)
+        _click_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[3]',driver1)
 #    _click_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[3]/div/div/div[3]/div[2]',driver1)
-    time.sleep(1)
+        time.sleep(1)
 
 #    _click('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[1]/div/input')
-    _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[1]/div/input',name241,driver1)
-    _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[2]/div/input',surname241,driver1)
-    ph=PhoneNumber('RU')
-    tn=ph.get_number(full=False)
-    _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[4]/div/input',tn,driver1)
-    f=_get_final_name(name241, surname241)
-    email24=_get_email_from_final_name(f)
-    _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[5]/div/input',email24,driver1)
+        _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[1]/div/input',name241,driver1)
+        _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[2]/div/input',surname241,driver1)
+        ph=PhoneNumber('RU')
+        tn=ph.get_number(full=False)
+        _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[4]/div/input',tn,driver1)
+        f=_get_final_name(name241, surname241)
+        email24=_get_email_from_final_name(f)
+        _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[5]/div/input',email24,driver1)
 
-    characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    bpassword="".join(random.sample(characters, random.randint(3,4)))
+        characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        bpassword="".join(random.sample(characters, random.randint(3,4)))
 
-    characters = "abcdefghijklmnopqrstuvwxyz"
-    p1="".join(random.sample(characters, random.randint(3,5)))
-    bpassword=bpassword+p1
+        characters = "abcdefghijklmnopqrstuvwxyz"
+        p1="".join(random.sample(characters, random.randint(3,5)))
+        bpassword=bpassword+p1
 
-    characters = "01234567890"
-    p1= "".join(random.sample(characters, random.randint(3,4)))
-    bpassword=bpassword+p1
-    print(bpassword)
+        characters = "01234567890"
+        p1= "".join(random.sample(characters, random.randint(3,4)))
+        bpassword=bpassword+p1
+#    print(bpassword)
 
-    _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[6]/div/input',bpassword,driver1)
-    _click_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[7]/div/label/input',driver1)
+        _send_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[6]/div/input',bpassword,driver1)
+        _click_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[7]/div/label/input',driver1)
 
 #    time.sleep(1)
-    _click_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[8]/button',driver1)
-    try:
-        _wait_element_driver('/html/body/div[3]/div[2]/div/h1',driver1)
-        print("lich kab")
-        _cred("#tradeallcrypto",email24,bpassword)
+        _click_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[8]/button',driver1)
+        try:
+            _wait_element_driver('/html/body/div[3]/div[2]/div/h1',driver1)
+            print("lich kab")
+            _cred("#tradeallcrypto",email24,bpassword)
+        except:
+            pass
+        driver1.close()
+        driver1.quit()
     except:
         pass
-    driver1.close()
-    driver1.quit()
+        try:
+            driver1.close()
+            driver1.quit()
+        except:
+            pass
+
 
 #    c=_get_text_driver('/html/body/div[3]/div[1]/div[4]/div/div/div/form/div/div[3]/div/div/div[1]/span',driver1)
 #    time.sleep(1000)
@@ -2115,11 +2124,11 @@ def check_proxy(pip):
         urllib.request.install_opener(opener)        
         sock=urllib.request.urlopen('https://tradeallcrypto.info')  # change the url address here
         if (sock.status==200):
-            print ("-sockK-")
-            print(sock.url)
-            print(sock.headers)
-            print(pip)
-            print ("calling tradeall crypro")
+#            print ("-sockK-")
+#            print(sock.url)
+#            print(sock.headers)
+#            print(pip)
+#            print ("calling tradeall crypro")
             tradeallcrypto_reg(pip)
 #            prox.http_proxy = pip
 #            prox.socks_proxy = pip
@@ -2380,7 +2389,7 @@ while True:
 #        driver = webdriver.Remote("http://172.17.0.1:4444/wd/hub", options=chrome_options, desired_capabilities=capabilities)
 #    else:
 #        driver = webdriver.Chrome(PATH, options=chrome_options, desired_capabilities=capabilities)
-#    a=tradeallcrypto_reg('13.114.160.78:80')
+#    a=tradeallcrypto_reg('36.95.23.89:8080')
 #    ptrend_people={}
     _log('do nothing in dev')
 #    threaded_proxy()
